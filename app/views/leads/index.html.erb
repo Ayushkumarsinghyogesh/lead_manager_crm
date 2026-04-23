@@ -1,21 +1,55 @@
-<h1>Leads</h1>
+<div class="max-w-7xl mx-auto">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-black text-slate-900 tracking-tight">Leads Pipeline</h1>
+    <%= link_to new_lead_path, class: "bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all flex items-center gap-2" do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="2.5" stroke-linecap="round"></path></svg>
+      Add Lead
+    <% end %>
+  </div>
 
-<%= link_to "New Lead", new_lead_path %>
+  <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-slate-50/50 border-b border-slate-100">
+          <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Lead Name</th>
+          <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Email</th>
+          <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+          <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
+        </tr>
+      </thead>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Status</th>
-    <th>Action</th>
-  </tr>
-
-  <% @leads.each do |lead| %>
-    <tr>
-      <td><%= lead.name %></td>
-      <td><%= lead.email %></td>
-      <td><%= lead.status %></td>
-      <td><%= link_to "Edit", edit_lead_path(lead) %></td>
-    </tr>
-  <% end %>
-</table>
+      <tbody class="divide-y divide-slate-50">
+        <% @leads.each do |lead| %>
+          <tr class="group hover:bg-slate-50/50 transition-colors">
+            <td class="px-8 py-5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-500">
+                  <%= lead.name[0] %>
+                </div>
+                <span class="font-bold text-slate-900"><%= lead.name %></span>
+              </div>
+            </td>
+            <td class="px-8 py-5 text-slate-600 font-medium"><%= lead.email %></td>
+            <td class="px-8 py-5">
+              <% if lead.new_lead? %>
+                <span class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-xs font-black ring-1 ring-inset ring-amber-100">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span> NEW
+                </span>
+              <% elsif lead.contacted? %>
+                <span class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-black ring-1 ring-inset ring-indigo-100">CONTACTED</span>
+              <% else %>
+                <span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-black ring-1 ring-inset ring-emerald-100">CLOSED</span>
+              <% end %>
+            </td>
+            <td class="px-8 py-5 text-right">
+              <%= link_to edit_lead_path(lead), class: "inline-flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-indigo-600 transition-colors" do %>
+                <span>Edit</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-width="2"></path></svg>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

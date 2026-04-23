@@ -1,0 +1,96 @@
+<div class="min-h-screen flex items-center justify-center bg-[#f8fafc] font-['Inter'] p-4 lg:p-0 selection:bg-indigo-100 selection:text-indigo-900">
+  
+  <div class="flex w-full max-w-6xl bg-white shadow-[0_32px_64px_-15px_rgba(0,0,0,0.1)] rounded-[2.5rem] overflow-hidden border-[6px] border-white ring-1 ring-gray-100">
+
+    <div class="hidden md:flex w-5/12 bg-slate-950 items-center justify-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-fuchsia-500/20"></div>
+      <div class="absolute top-[-20%] right-[-20%] w-[500px] h-[500px] bg-indigo-600/30 rounded-full blur-[120px] animate-pulse"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-fuchsia-600/20 rounded-full blur-[100px]"></div>
+
+      <div class="z-10 px-12 py-16 w-full h-full flex flex-col justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-tr from-indigo-500 to-fuchsia-500 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-white font-bold tracking-tight text-xl">LeadCRM</span>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-2xl">
+          <h1 class="text-4xl font-bold text-white leading-tight mb-4 tracking-tight">
+            Accelerate your <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-fuchsia-400">Revenue Engine.</span>
+          </h1>
+          <p class="text-gray-400 font-light leading-relaxed">
+            The all-in-one platform to track, nurture, and close leads with AI-driven insights.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-medium text-gray-500 uppercase tracking-[0.2em]">
+          <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Trusted by 500+ Enterprises
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full md:w-7/12 bg-white px-8 py-12 lg:px-20 lg:py-24 flex flex-col justify-center relative">
+      
+      <div class="max-w-md mx-auto w-full">
+        <header class="mb-12">
+          <h2 class="text-4xl font-black text-gray-900 tracking-tighter mb-3">Sign in</h2>
+          <p class="text-gray-500 text-lg">Enter your credentials to access your dashboard.</p>
+        </header>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-gray-700 tracking-wide ml-1">Email Address</label>
+            <div class="relative group">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-indigo-600 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <%= f.email_field :email, autofocus: true, placeholder: "name@company.com", 
+                  class: "w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-200 rounded-2xl focus:bg-white focus:ring-[6px] focus:ring-indigo-500/5 focus:border-indigo-500 outline-none transition-all duration-300 placeholder:text-gray-400 font-medium" %>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between items-center px-1">
+              <label class="text-sm font-bold text-gray-700 tracking-wide">Password</label>
+              <%= link_to "Forgot Password?", new_password_path(resource_name), class: "text-xs font-extrabold text-indigo-600 hover:text-indigo-700 transition-all underline underline-offset-4" %>
+            </div>
+            <div class="relative group">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-indigo-600 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <%= f.password_field :password, placeholder: "••••••••", 
+                  class: "w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-200 rounded-2xl focus:bg-white focus:ring-[6px] focus:ring-indigo-500/5 focus:border-indigo-500 outline-none transition-all duration-300 font-medium" %>
+            </div>
+          </div>
+
+          <div class="flex items-center px-1">
+            <div class="flex items-center">
+              <%= f.check_box :remember_me, class: "w-5 h-5 text-indigo-600 border-gray-200 rounded-lg focus:ring-indigo-500 transition-all cursor-pointer" %>
+              <label for="<%= resource_name %>_remember_me" class="ml-3 block text-sm text-gray-500 font-semibold cursor-pointer select-none">
+                Remember this device
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <%= f.submit "Continue to Dashboard", 
+                class: "w-full bg-gray-900 hover:bg-black text-white font-bold py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 transform active:scale-[0.99] cursor-pointer" %>
+          </div>
+
+        <% end %>
+
+        <div class="mt-12 text-center">
+          <p class="text-gray-500 font-medium">
+            New to LeadCRM? 
+            <%= link_to "Get Started for Free", new_registration_path(resource_name), class: "text-indigo-600 font-bold hover:text-indigo-700 transition ml-1 decoration-2" %>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

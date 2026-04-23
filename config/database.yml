@@ -19,6 +19,4 @@ test:
 
 production:
   <<: *default
-  database: lead_manager_production
-  username: lead_manager
-  password: <%= ENV["LEAD_MANAGER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
