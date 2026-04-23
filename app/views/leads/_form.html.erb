@@ -1,0 +1,8 @@
+<%= form_with model: @lead do |f| %>
+  <%= f.text_field :name, placeholder: "Name" %><br>
+  <%= f.text_field :email, placeholder: "Email" %><br>
+
+  <%= f.select :status, Lead.statuses.keys %><br>
+
+  <%= f.submit %>
+<% end %>

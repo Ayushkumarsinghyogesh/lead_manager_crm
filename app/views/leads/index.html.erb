@@ -1,0 +1,21 @@
+<h1>Leads</h1>
+
+<%= link_to "New Lead", new_lead_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <% @leads.each do |lead| %>
+    <tr>
+      <td><%= lead.name %></td>
+      <td><%= lead.email %></td>
+      <td><%= lead.status %></td>
+      <td><%= link_to "Edit", edit_lead_path(lead) %></td>
+    </tr>
+  <% end %>
+</table>
