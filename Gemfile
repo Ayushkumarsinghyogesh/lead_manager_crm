@@ -61,3 +61,6 @@ end
 gem "tailwindcss-rails", "~> 4.4"
 
 gem "devise", "~> 5.0"
+
+gem "dotenv-rails", groups: [ :development, :test ]
+gem "rails_12factor", group: :production
